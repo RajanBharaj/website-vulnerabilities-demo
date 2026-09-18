@@ -13,7 +13,7 @@ The gift card purchase and gifting pages rendered a `director` query parameter d
 **Fix:** removed the `safe` filter, restoring Django's default auto-escaping.
 
 **Cross-Site Request Forgery (CSRF)**
-The gifting endpoint allowed a card to be sent to any username via a simple GET request. While `SESSION_COOKIE_SAMESITE = "Lax"` blocked traditional POST-based CSRF, a malicious page could still trigger the vulnerable GET request in a victim's browser, silently gifting a card to an attacker-controlled account. A working proof-of-concept is included at "/part1/csrf/attack.html". Fix: added CSRF token protection and required the sender's password to authorize any gift transfer, closing the GET-based bypass.
+The gifting endpoint allowed a card to be sent to any username via a simple GET request. While `SESSION_COOKIE_SAMESITE = "Lax"` blocked traditional POST-based CSRF, a malicious page could still trigger the vulnerable GET request in a victim's browser, silently gifting a card to an attacker-controlled account. A working proof-of-concept is included at "/part1/csrf/attack.html". **Fix:** added CSRF token protection and required the sender's password to authorize any gift transfer, closing the GET-based bypass.
 
 **SQL Injection**
 The "use card" feature loaded a signature field from an uploaded gift card file directly into a raw SQL query without parameterization, allowing UNION-based injection to extract salted passwords and other user data.
