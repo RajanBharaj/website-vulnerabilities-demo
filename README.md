@@ -25,7 +25,7 @@ When uploaded card data failed to parse as JSON, the application fell back to a 
 
 ## Database Encryption
 
-Implemented field-level database encryption using [`djfernet`](https://github.com/khilnani/djfernet), chosen for compatibility with the project's Django 4.1.7/Python 3 stack.
+Implemented field-level database encryption using [`djfernet`](https://djfernet.readthedocs.io/en/latest/), chosen for compatibility with the project's Django 4.1.7/Python 3 stack.
 
 **Fields encrypted, and why:**
 - **`Card.data`** — the card's usable payload, so a stolen card file can't be redeemed
